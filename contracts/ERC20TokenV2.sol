@@ -32,7 +32,9 @@ contract ERC20TokenV2 is Initializable, ERC20Upgradeable {
         _burn(to, amount);
     }
 
-     function buy() external payable returns(bool){
+    receive() external payable {}
+
+    function buy() external payable returns(bool) {
         require(msg.sender.balance >= msg.value && msg.value >= 0, "Insufficient Balance in the Contract");
         (bool success, ) = address(this).call{value: msg.value }("");
         require(success,"Unsucessful buy attempt");
@@ -42,17 +44,17 @@ contract ERC20TokenV2 is Initializable, ERC20Upgradeable {
     }
     
 
-    function sell(uint _qty) external payable returns(bool){
-        require(msg.sender != address(this) || msg.sender != address(0),  "Cannot sell ");
-        require(balanceOf(msg.sender) >= _qty, "Not enough tokens to sell");
-        _transfer(msg.sender, address(this), _qty);
-        uint _value = _qty * 1000;
-        (bool success, ) = msg.sender.call{value: _value }("");
-        require(success,"Payment unsucessful");
-        return true;
-    }
+    // function sell(uint _qty) external payable returns(bool){
+    //     require(msg.sender != address(this) || msg.sender != address(0),  "Cannot sell ");
+    //     require(balanceOf(msg.sender) >= _qty, "Not enough tokens to sell");
+    //     _transfer(msg.sender, address(this), _qty);
+    //     uint _value = _qty * 1000;
+    //     (bool success, ) = msg.sender.call{value: _value }("");
+    //     require(success,"Payment unsucessful");
+    //     return true;
+    // }
 
-    function allowance(address _account, uint256 _amount) public returns (bool){
+    function allowanceToken(address _account, uint256 _amount) public returns (bool){
         require (_account != address(this) && _amount != 0, "ERC20: ");
         _spendAllowance(msg.sender, _account, _amount);
         return true;

@@ -1,7 +1,17 @@
-proxy address = 
-implementation address
-gnosis address
-timelock = 0xaCf1E363D29967c1b6F3E07B2335312766a4c478
-proxy admin
-V2 implementation
+proxy address = ""
+implementation address =  ""
+gnosis address = "0x9BD6295FD7F94B66f75E2B5D08fbf7A7A7f63175"
+
+timelock = "0xe0Ea7A063acB21112528ce5d1b85D8261E5849bb"
+proxy admin = ""
+V2 implementation = ""
 V3 implementation
+
+
+
+
+TOKENV1_PROXY_ADDRESS = "0x6eE935B6B58A428Fd550b9F38D63d9b80E013D35"
+TOKENV1_IMPLEMENTATION_ADDRESS = "0xFCebB5d1A09D66f8e65733ecc9aD214968ee2cA8"
+GNOSIS_MULTISIG_ADDERSS = "0x9BD6295FD7F94B66f75E2B5D08fbf7A7A7f63175"
+TIMELOCK_ADDRESS = "0xe0Ea7A063acB21112528ce5d1b85D8261E5849bb"
+PROXY_ADMIN = "0x8Ad50CC6d269b209d3575285cF763d9c60625a15"

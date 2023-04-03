@@ -1,6 +1,6 @@
 module.exports = [
   150, // minimum delay timer in seconds
-  ["0x3E2E8c8F913d293E4C001390F14c51Ef2f0F89a5"], // Proposers Array - Gnosis Safe Address
-  ["0x3E2E8c8F913d293E4C001390F14c51Ef2f0F89a5"], // Executors Array - Gnosis Safe Address
-  "0x315F60449DaB3D321aF75821b576E7F436308635", // Metamask Account
+  ["0x9BD6295FD7F94B66f75E2B5D08fbf7A7A7f63175"], // Proposers Array - Gnosis Safe Address
+  ["0x9BD6295FD7F94B66f75E2B5D08fbf7A7A7f63175"], // Executors Array - Gnosis Safe Address
+  "0x4644933680922aE17748753ae20264436ca616cc", // Metamask Account
 ];
