@@ -11,6 +11,9 @@
   "license": "ISC",
   "devDependencies": {
     "@nomicfoundation/hardhat-toolbox": "^2.0.2",
+    "@openzeppelin/test-helpers": "^0.5.16",
+    "chai": "^4.3.7",
+    "dotenv": "^16.0.3",
     "hardhat": "^2.13.0"
   },
   "dependencies": {

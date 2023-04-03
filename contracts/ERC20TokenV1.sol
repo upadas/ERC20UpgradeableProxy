@@ -5,17 +5,16 @@ import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
 
 contract ERC20TokenV1 is Initializable, ERC20Upgradeable {
     /// @custom:oz-upgrades-unsafe-allow constructor
-    constructor() {
-        _disableInitializers();
-    }
+     address public owner;
+
+    // constructor() {
+    //     _disableInitializers();
+    // }
 
     function initialize(uint _totalSupply) public initializer {
         __ERC20_init("ERC20 Token", "TKN");
         _mint(msg.sender, _totalSupply);
-    }
-
-    function mint(address to, uint256 amount) public {
-        _mint(to, amount);
+        owner = msg.sender;
     }
 }
 
