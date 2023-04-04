@@ -6,16 +6,15 @@ let deployer;
 const tokenName = "ERC20 Token";
 const tokenSymbol = "TKN";
 
-const amount = 1000000;
+const amountToEther = (amount) => {
+  return ethers.utils.parseEther(amount.toString());
+};
+const amount = amountToEther(1000000);
 
-describe("ERC20TokenV1 Test", () => {
+describe("ERC20TokenV1 Proxy Test", () => {
   before(async () => {
-    const TokenV1 = await ethers.getContractFactory("ERC20TokenV1");
-    tokenV1 = await upgrades.deployProxy(TokenV1, [amount]);
-    await tokenV1.deployed();
-
-    // const implementationAddress =
-    //   await upgrades.erc1967.getImplementationAddress(tokenV1.address);
+    const ERC20TokenV1 = await ethers.getContractFactory("ERC20TokenV1");
+    tokenV1 = await upgrades.deployProxy(ERC20TokenV1, [amount]);
 
     const account = await ethers.getSigners();
     deployer = account[0];

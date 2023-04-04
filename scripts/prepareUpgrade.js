@@ -1,5 +1,8 @@
+const { ethers, upgrades } = require("hardhat");
+
 async function main() {
-  const proxyAddress = "0x461379B07e26858c101d98dc49c9122041C32a02"; // This is the proxy address NOT the admin of the proxy.
+  const proxyAddress = "0x6eE935B6B58A428Fd550b9F38D63d9b80E013D35";
+  // This is the proxy address NOT the admin of the proxy.
 
   const ERC20TokenV2 = await ethers.getContractFactory("ERC20TokenV2");
   console.log("Preparing upgrade...");

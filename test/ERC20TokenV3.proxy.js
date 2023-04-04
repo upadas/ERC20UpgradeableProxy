@@ -11,11 +11,14 @@ const amountToEther = (amount) => {
 };
 const amount = amountToEther(1000000);
 
-describe("ERC20tokenV3 Test", () => {
+describe("ERC20tokenV3 Proxy Test", () => {
   before(async () => {
+    const ERC20TokenV1 = await ethers.getContractFactory("ERC20TokenV1");
+    const ERC20TokenV2 = await ethers.getContractFactory("ERC20TokenV2");
     const ERC20TokenV3 = await ethers.getContractFactory("ERC20TokenV3");
-    tokenV3 = await upgrades.deployProxy(ERC20TokenV3, [amount]);
-    await tokenV3.deployed();
+    const tokenV1 = await upgrades.deployProxy(ERC20TokenV1, [amount]);
+    const tokenV2 = await upgrades.upgradeProxy(tokenV1.address, ERC20TokenV2);
+    tokenV3 = await upgrades.upgradeProxy(tokenV2.address, ERC20TokenV3);
 
     const account = await ethers.getSigners();
     deployer = account[0];
@@ -69,7 +72,6 @@ describe("ERC20tokenV3 Test", () => {
 
     it("9. User1 should not be able to mint the token", async () => {
       const amount2 = 5000;
-      // await tokenV3.connect(user1).mint(user1.address, amount2);
       await expect(tokenV3.connect(user1).mint(user1.address, amount2)).to.be
         .reverted;
     });
@@ -106,20 +108,6 @@ describe("ERC20tokenV3 Test", () => {
       const afterBalance = await tokenV3.balanceOf(deployer.address);
       expect(afterBalance).to.be.greaterThan(beforeBalance);
     });
-
-    // it("13. Should be able to perform allowance action", async () => {
-    //   const amount = amountToEther(5);
-    //   await tokenV3.connect(deployer).allowanceToken(user1.address, amount);
-
-    //   const afterBalance = await tokenV3.balanceOf(deployer.address);
-    //   console.log(afterBalance);
-
-    //   const allowanceAmount = await tokenV3.allowance(
-    //     deployer.address,
-    //     user1.address
-    //   );
-    //   console.log(allowanceAmount);
-    // });
 
     describe("Phase 3: Testing Withdraw Functionality", () => {
       it("Only owner should be able to withdraw the amount", async () => {
