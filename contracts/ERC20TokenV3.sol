@@ -1,4 +1,3 @@
-
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.6;
 import "@openzeppelin/contracts-upgradeable/token/ERC20/ERC20Upgradeable.sol";
@@ -65,20 +64,7 @@ contract ERC20TokenV3 is Initializable, ERC20Upgradeable {
         return address(this).balance;
     }
 
-     // function sell(uint _qty) external payable returns(bool){
-    //     require(msg.sender != address(this) || msg.sender != address(0),  "Cannot sell ");
-    //     require(balanceOf(msg.sender) >= _qty, "Not enough tokens to sell");
-    //     _transfer(msg.sender, address(this), _qty);
-    //     uint _value = _qty * 1000;
-    //     (bool success, ) = msg.sender.call{value: _value }("");
-    //     require(success,"Payment unsucessful");
-    //     return true;
-    // }
-
-
-
 }
-
 
 
 // pragma solidity ^0.8.6;
